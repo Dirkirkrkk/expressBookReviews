@@ -47,17 +47,17 @@ regd_users.post("/login", (req,res) => {
 regd_users.put("/auth/review/:isbn", (req, res) => {
   const isbn = req.params.isbn;
   const review = req.query.review;
-  const user = req.query.user;
+  const user = req.body.user;
 
   books[isbn].reviews[user] = review;
 
   return res.status(200).send("Review for book with isbn " + isbn + " has been added/updated.");
 });
 
-regd_users.delete("/auth/reviewdelete/:isbn", (req, res) => {
+regd_users.delete("/auth/review/:isbn", (req, res) => {
   const isbn = req.params.isbn;
   const review = req.query.review;
-  const user = req.query.user;
+  const user = req.body.user;
 
   delete books[isbn].reviews[user];
 

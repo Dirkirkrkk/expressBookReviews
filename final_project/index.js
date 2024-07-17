@@ -10,9 +10,7 @@ app.use(express.json());
 
 app.use("/customer",session({secret:"fingerprint_customer",resave: true, saveUninitialized: true}))
 
-/*app.use("/customer/auth/*", function auth(req,res,next) {
-    return;
-
+app.use("/customer/auth/*", function auth(req,res,next) {
     // Check if user is authenticated
     if (req.session.authorization) {
         let token = req.session.authorization['accessToken']; // Access Token
@@ -31,7 +29,7 @@ app.use("/customer",session({secret:"fingerprint_customer",resave: true, saveUni
     } else {
         return res.status(403).json({ message: "User not logged in" });
     }
-});*/
+});
  
 const PORT =5000;
 
